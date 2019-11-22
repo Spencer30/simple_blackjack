@@ -11,13 +11,11 @@ console.log('linked!')
 class Card {
     constructor(name, value, imgUp, imgDown, faceUp) {
         this.name = name,
-        this.value = value,
-        this.imgUp = imgUp,
-        this.imgDown = imgDown,
-        this.faceUp = faceUp
+            this.value = value,
+            this.imgUp = imgUp,
+            this.imgDown = imgDown,
+            this.faceUp = faceUp
     }
-
-
 }
 
 
@@ -48,82 +46,159 @@ let twoOfDiamonds = new Card('Two of Diamonds', 2, "images/2D.png", "images/red_
 
 let cardArray = [aceOfSpades, aceOfHearts, aceOfClubs, aceOfDiamonds, kingOfSpades, nineOfSpades, fiveOfSpades, queenOfHearts, tenOfHearts, sixOfHearts, jackOfClubs, sevenOfClubs, threeOfClubs, eightOfDiamonds, fourOfDiamonds, twoOfDiamonds];
 
+//Card Slots
+let playerCardOne = document.getElementById('playerOne');
+let playerCardTwo = document.getElementById('playerTwo');
+let playerCardThree = document.getElementById('playerThree');
+let playerCardFour = document.getElementById('playerFour');
+let playerCardFive = document.getElementById('playerFive');
+let playerCardSix = document.getElementById('playerSix');
+let playerCardSeven = document.getElementById('playerSeven');
+let dealerCardOne = document.getElementById('dealerOne');
+let dealerCardTwo = document.getElementById('dealerTwo');
 
-const changeWager = (balance) => {
-    balance = 500;
-    let wager = prompt('How much would you like to wager per hand?')
-    while (wager > balance) {
-        wager = prompt('Not enough money. Please enter a valid wager')
+//Wager, Balance and Current Hand
+let balanceId = document.getElementById('balanceDisplay');
+let wagerId = document.getElementById('wagerDisplay');
+let handScore = document.getElementById('handScore');
+
+//Buttons
+let standButton = document.getElementById('standBtn');
+let hitButton = document.getElementById('hitBtn');
+let dealButton = document.getElementById('deal');
+let wagerButton = document.getElementById('wager');
+let newGameButton = document.getElementById('newGame');
+
+//Scoring Variables
+let playerScore, dealerScore;
+let balance = 500;
+let wager = 25;
+
+let playerTurn = true;
+
+const changeWager = () => {
+    let wagerPrompt = prompt('How much would you like to wager per hand?')
+    while (wagerPrompt > balance) {
+        wagerPrompt = prompt('Not enough money. Please enter a valid wager')
     }
-    document.getElementById('wager').innerHTML = `Current Wager: $${wager}`
+    wagerId.innerHTML = `Current Wager: $${wagerPrompt}`
+    wager = wagerPrompt;
 }
 
-// const shuffleCards = (cardArr) => {
-//     let cardDeck = [];
-//     let randomNumber, card;
-//     for (let i=0; i<20; i++){
-//         randomNumber = Math.floor(Math.random() * cardArray.length);
-//         card = cardArray[randomNumber];
-//         if (!cardDeck.includes(card)){
-//             cardDeck.push(card)
-//         }
-//     }
-//     console.log(cardDeck);
-//     return cardDeck;
-// }
+const shuffleCards = (cardArr) => {
+    let cardDeck = [];
+    let randomNumber, card;
+    for (let i = 0; i < 16; i++) {
+        randomNumber = Math.floor(Math.random() * cardArray.length);
+        card = cardArray.splice(randomNumber, 1);
+        if (!cardDeck.includes(card)) {
+            cardDeck.push(card[0])
+        }
+    }
+    // console.log(cardDeck);
+    // console.log(cardArray.length)
+    return cardDeck;
+}
 
-// shuffleCards(cardArray)
 
-const deal = (cardArr) => {    
-    let playerCardOne = document.getElementById('playerOne');
-    let playerCardTwo = document.getElementById('playerTwo');
-    let dealerCardOne = document.getElementById('dealerOne');
-    let dealerCardTwo = document.getElementById('dealerTwo');
 
-    let cardOneNumber = Math.floor(Math.random() * cardArray.length);
-    cardOne = cardArray[cardOneNumber];
-    cardArray.splice(cardOneNumber, 1);    
+/*
+Shuffle cards
+Deal cards
+calculate hand
 
-    let cardTwoNumber = Math.floor(Math.random() * cardArray.length);
-    cardTwo = cardArray[cardTwoNumber];
-    cardArray.splice(cardTwoNumber, 1);    
+*/
 
-    let cardThreeNumber = Math.floor(Math.random() * cardArray.length);
-    cardThree = cardArray[cardThreeNumber];
-    cardArray.splice(cardThreeNumber, 1)
+const deal = (cardArr) => {
+    //Subtract from Balance
+    balanceId.innerHTML = `Balance: $${balance - wager}`;
 
-    let cardFourNumber = Math.floor(Math.random() * cardArray.length);
-    cardFour = cardArray[cardFourNumber];
-    cardArray.splice(cardFourNumber, 1)
-    
+    //Shuffle Deck and get first 4 cards
+    let shuffleDeck = shuffleCards(cardArray);
+    console.log(shuffleDeck);
+    let cardOne = shuffleDeck.shift();
+    let cardTwo = shuffleDeck.shift();
+    let cardThree = shuffleDeck.shift();
+    let cardFour = shuffleDeck.shift();
+    let cardFive = shuffleDeck.shift();;
+    let cardSix = shuffleDeck.shift();
+    let cardSeven = shuffleDeck.shift();
+    let cardEight = shuffleDeck.shift();
+    let cardNine = shuffleDeck.shift();
+    let cardTen = shuffleDeck.shift();
+    let cardEleven = shuffleDeck.shift();
+    let cardTwelve = shuffleDeck.shift();
 
+    //Deal Cards
     playerCardOne.src = cardOne.imgUp;
     playerCardOne.style.display = 'block';
 
     setTimeout(function () {
-    dealerCardOne.src = cardTwo.imgDown;
+        dealerCardOne.src = cardTwo.imgDown;
         dealerCardOne.style.display = 'block';
     }, 700)
 
     setTimeout(function () {
-    playerCardTwo.src = cardThree.imgUp;
+        playerCardTwo.src = cardThree.imgUp;
         playerCardTwo.style.display = 'block';
     }, 1500)
 
     setTimeout(function () {
-    dealerCardTwo.src = cardFour.imgUp
+        dealerCardTwo.src = cardFour.imgUp
         dealerCardTwo.style.display = 'block';
     }, 2000)
 
+    //Show Hit or Stand Buttons / hide others
     setTimeout(hitOrStandDisplay, 200);
+
+    //Calculate Current Hand Score
+    playerScore = cardOne.value + cardThree.value;
+    dealerScore = cardTwo.value + cardFour.value;
+    handScore.innerHTML = `Current Hand: ${playerScore}`
+
+    //Handle the Hit button    
+    let count = 0;
+    hitButton.addEventListener('click', () => {
+        count += 1;
+        if (count === 1) {
+            playerCardThree.src = cardFive.imgUp;
+            playerCardThree.style.display = 'block'
+            playerScore += cardFive.value;
+            handScore.innerHTML = `Current Hand: ${playerScore}`;
+        } else if (count === 2) {
+            playerCardFour.src = cardSix.imgUp;
+            playerCardFour.style.display = 'block'
+            playerScore += cardSix.value;
+            handScore.innerHTML = `Current Hand: ${playerScore}`;
+        } else if (count === 3) {
+            playerCardFive.src = cardSeven.imgUp;
+            playerCardFive.style.display = 'block'
+            playerScore += cardSeven.value;
+            handScore.innerHTML = `Current Hand: ${playerScore}`;
+        }
+    })
+
+    //Handle the Stand Button
+    standButton.addEventListener('click', () => {
+        standButton.style.display = 'none';
+        hitButton.style.display = 'none';
+        playerTurn = false;
+
+        //Deal Dealer Cards
+        if (!playerTurn){
+            dealerCardOne.src = cardTwo.imgUp;
+            if (count === 0) {
+                dealerCardThree = cardFive.imgup
+            }
+        }
+    })
+
+    
+    
+
 }
 
 const hitOrStandDisplay = () => {
-    let standButton = document.getElementById('standBtn');
-    let hitButton = document.getElementById('hitBtn');
-    let dealButton = document.getElementById('deal');
-    let wagerButton = document.getElementById('wager');
-    let newGameButton = document.getElementById('newGame');
     standButton.style.display = 'block';
     hitButton.style.display = 'block';
     dealButton.style.display = 'none'
@@ -131,62 +206,3 @@ const hitOrStandDisplay = () => {
     newGameButton.style.display = 'none'
 }
 
-const showCard3 = (cardArr) => {
-    let nextCardThree = document.getElementById('playerThree');
-    cardThreeNumber = Math.floor(Math.random() * cardArray.length);
-    let cardThree = cardArray[cardThreeNumber];
-    cardArray.splice(cardThreeNumber, 1); 
-    nextCardThree.src = cardThree.imgUp
-    nextCardThree.style.display = 'block';
-}
-
-const showCard4 = () => {
-    let nextCardFour = document.getElementById('playerFour');
-    cardFourNumber = Math.floor(Math.random() * cardArray.length);
-    let cardFour = cardArray[cardFourNumber];
-    cardArray.splice(cardFourNumber, 1); 
-    nextCardFour.src = cardFour.imgUp
-    nextCardFour.style.display = 'block';
-}
-
-const showCard5 = () => {
-    let nextCardFive = document.getElementById('playerFive');
-    cardFiveNumber = Math.floor(Math.random() * cardArray.length);
-    let cardFive = cardArray[cardFiveNumber];
-    cardArray.splice(cardFiveNumber, 1); 
-    nextCardFive.src = cardFive.imgUp
-    nextCardFive.style.display = 'block';
-}
-
-const showCard6 = () => {
-    let nextCardSix = document.getElementById('playerSix');
-    cardSixNumber = Math.floor(Math.random() * cardArray.length);
-    let cardSix = cardArray[cardSixNumber];
-    cardArray.splice(cardSixNumber, 1); 
-    nextCardSix.src = cardSix.imgUp
-    nextCardSix.style.display = 'block';
-}
-
-const showCard7 = () => {
-    let cardSeven = document.getElementById('playerSeven');
-    cardSeven.style.display = 'block';
-}
-
-let count = 0;
-const hit = () => {    
-    document.getElementById('hitBtn').addEventListener('click', (e) => {        
-        count += 1
-        if (count === 1) {
-            showCard3();            
-        } else if (count === 2) {
-            showCard4();            
-        } else if (count === 3) {
-            showCard5();
-        } else if (count === 4) {
-            showCard6();
-        } else if (count === 5) {
-            showCard7();
-        }
-    })
-    
-}

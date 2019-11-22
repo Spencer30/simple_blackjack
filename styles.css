@@ -78,13 +78,45 @@ body {
     position: absolute;
     margin-left: 48rem;
     margin-top: 3rem;
-
 }
 .dealerCardTwo {
     position: absolute;
     margin-left: 53rem;
     margin-top: 3rem;
+}
 
+.dealerCardThree {
+    position: absolute;
+    margin-left: 58rem;
+    margin-top: 3rem;
+    display: none;
+}
+
+.dealerCardFour {
+    position: absolute;
+    margin-left: 63rem;
+    margin-top: 3rem;
+    display: none;
+}
+.dealerCardFive {
+    position: absolute;
+    margin-left: 68rem;
+    margin-top: 3rem;
+    display: none;
+}
+
+.dealerCardSix {
+    position: absolute;
+    margin-left: 73rem;
+    margin-top: 3rem;
+    display: none;
+}
+
+.dealerCardSeven {
+    position: absolute;
+    margin-left: 78rem;
+    margin-top: 3rem;
+    display: none;
 }
 
 .btn {
