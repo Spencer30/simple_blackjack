@@ -1,0 +1,147 @@
+.jumbotron {
+    background-image: url("./images/bjTable2.jpg");
+    background-size: cover;
+    height: 1050px;
+}
+
+h1 {
+    color: pink;
+}
+
+body {
+    overflow: hidden;
+}
+
+.card {
+    margin-top: 10rem;
+}
+.playingCard {
+    width: 10%;
+}
+
+.userCardOne {
+    position: absolute;
+    margin-left: 48rem;
+    margin-top: 35rem;
+
+}
+
+.userCardTwo {
+    position: absolute;
+    margin-left: 53rem;
+    margin-top: 35rem;
+
+}
+
+.userCardThree {
+    position: absolute;
+    margin-left: 58rem;
+    margin-top: 35rem;
+    display: none;
+
+}
+
+.userCardFour {
+    position: absolute;
+    margin-left: 63rem;
+    margin-top: 35rem;
+    display: none;
+
+}
+
+.userCardFive {
+    position: absolute;
+    margin-left: 68rem;
+    margin-top: 35rem;
+    display: none;
+
+}
+
+.userCardSix {
+    position: absolute;
+    margin-left: 73rem;
+    margin-top: 35rem;
+    display: none;
+
+}
+
+.userCardSeven {
+    position: absolute;
+    margin-left: 78rem;
+    margin-top: 35rem;
+    display: none;
+
+}
+
+
+.dealerCardOne {
+    position: absolute;
+    margin-left: 48rem;
+    margin-top: 3rem;
+
+}
+.dealerCardTwo {
+    position: absolute;
+    margin-left: 53rem;
+    margin-top: 3rem;
+
+}
+
+.btn {
+    position: absolute;
+    height: 4rem;
+    width: 10rem;
+    box-shadow: black;
+}
+
+.dealHand{
+    margin-top: 14rem;
+    margin-left: 85%;
+}
+.wager {
+    margin-top: 20rem;
+    margin-left: 85%;
+}
+
+.newGame {
+    margin-top: 26rem;
+    margin-left: 85%;
+}
+
+#playerOne {
+    display: none;
+}
+
+#playerTwo {
+    display: none;
+}
+
+#dealerOne {
+    display: none;
+}
+
+#dealerTwo {
+    display: none;
+}
+
+.stand {
+    border-radius: 50%;
+    border: 5px solid white;
+    margin-top: 23rem;
+    margin-left: 35rem;
+    height: 150px;
+    width: 150px;
+    color: white;
+    display: none;
+}
+
+.hit {
+    border-radius: 50%;
+    border: 5px solid white;
+    margin-top: 23rem;
+    margin-left: 65rem;
+    height: 150px;
+    width: 150px;
+    color: white;
+    display: none;
+}
