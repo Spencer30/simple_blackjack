@@ -15,36 +15,85 @@
   </head>
   <body>
     <div class="jumbotron">
-      <img id="dealerOne" class="playingCard dealerCardOne" src="images/red_back.png" />
-      <img id="dealerTwo" class="playingCard dealerCardTwo" src="images/10C.png" />
-      <img id="dealerThree" class="playingCard dealerCardThree" src="images/10H.png" />
-      <img id="dealerFour" class="playingCard dealerCardFour" src="images/3C.png" />
-      <img id="dealerFive" class="playingCard dealerCardFive" src="images/5S.png" />
-      <img id="dealerSix" class="playingCard dealerCardSix" src="images/2D.png" />
-      <img id="dealerSeven" class="playingCard dealerCardSeven" src="images/7C.png" />
+      <img
+        id="dealerOne"
+        class="playingCard dealerCardOne"
+        src="images/red_back.png"
+      />
+      <img
+        id="dealerTwo"
+        class="playingCard dealerCardTwo"
+        src="images/10C.png"
+      />
+      <img
+        id="dealerThree"
+        class="playingCard dealerCardThree"
+        src="images/10H.png"
+      />
+      <img
+        id="dealerFour"
+        class="playingCard dealerCardFour"
+        src="images/3C.png"
+      />
+      <img
+        id="dealerFive"
+        class="playingCard dealerCardFive"
+        src="images/5S.png"
+      />
+      <img
+        id="dealerSix"
+        class="playingCard dealerCardSix"
+        src="images/2D.png"
+      />
+      <img
+        id="dealerSeven"
+        class="playingCard dealerCardSeven"
+        src="images/7C.png"
+      />
       <img id="playerOne" class="playingCard userCardOne" src="images/AS.png" />
       <img id="playerTwo" class="playingCard userCardTwo" src="images/JS.png" />
-      <img id="playerThree" class="playingCard userCardThree" src="images/4C.png" />
-      <img id="playerFour" class="playingCard userCardFour" src="images/7S.png" />
-      <img id="playerFive" class="playingCard userCardFive" src="images/9C.png" />
+      <img
+        id="playerThree"
+        class="playingCard userCardThree"
+        src="images/4C.png"
+      />
+      <img
+        id="playerFour"
+        class="playingCard userCardFour"
+        src="images/7S.png"
+      />
+      <img
+        id="playerFive"
+        class="playingCard userCardFive"
+        src="images/9C.png"
+      />
       <img id="playerSix" class="playingCard userCardSix" src="images/9D.png" />
-      <img id="playerSeven" class="playingCard userCardSeven" src="images/3C.png" />
-      <button id="standBtn"class="btn btn-warning stand">Stand</button>
+      <img
+        id="playerSeven"
+        class="playingCard userCardSeven"
+        src="images/3C.png"
+      />
+      <button id="standBtn" class="btn btn-warning stand">Stand</button>
       <button id="hitBtn" class="btn btn-danger hit" onclick="">Hit</button>
-      <button id="deal" class="btn btn-success dealHand" onclick="deal()">Deal</button>
-      <button id="wager" class="btn btn-primary wager" onclick="changeWager()">Change Wager</button>
+      <button id="deal" class="btn btn-success dealHand" onclick="deal()">
+        Deal
+      </button>
+      <button id="wager" class="btn btn-primary wager" onclick="changeWager()">
+        Change Wager
+      </button>
       <button id="newGame" class="btn btn-danger newGame">New Game</button>
       <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="images/girl.jpg" alt="Woman Dealer">
-            <div class="card-body">
-              <h5 id="balanceDisplay" class="card-title">Balance:  $500</h5>
-              <br>
-              <h5 id="wagerDisplay">Current Wager: $25</h5>
-              <br>
-              <h5 id="handScore">Current Hand: 0</h5>
-              
-            </div>
-          </div>
+        <img class="card-img-top" src="images/girl.jpg" alt="Woman Dealer" />
+        <div class="card-body">
+          <h5 id="dealerHand" class="card-title">Dealer Hand: </h5>
+          <br />
+          <h5 id="balanceDisplay" class="card-title">Balance: $500</h5>
+          <br />
+          <h5 id="wagerDisplay">Current Wager: $25</h5>
+          <br />
+          <h5 id="handScore">Current Hand: 0</h5>
+        </div>
+      </div>
     </div>
     <script src="index.js"></script>
   </body>
