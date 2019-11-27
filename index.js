@@ -1,8 +1,10 @@
 /**
- * Simple Blackjack allows a user to play against a dealer with only hit or stand options. No double or split as of yet. Player goes first and will have the option to hit or stand. If hit, their hand score increases and another card is shown.
+ * Simple Blackjack allows a user to play against a dealer with only hit or stand options. No double or split as of yet. Player goes first and will have the option to hit or stand. If hit, their hand score increases and another card is shown. User can choose to stand at anytime. When they do, it triggers a function to deal the dealer cards. Depending on what the dealer does, functions are called to determine the winner then pay (update balance) the user if they win. 
+ * 
+ * Note** - Ace needs to be treated as a 11 or 1. Currently it's value is 11
  */
 
-//enums and tostring
+
 class Card {
     constructor(name, value, imgUp, imgDown) {
         this.name = name,
