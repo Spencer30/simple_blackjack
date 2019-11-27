@@ -1,11 +1,15 @@
-console.log('linked!')
+/**
+ * Simple Blackjack allows a user to play against a dealer with only hit or stand options. No double or split as of yet. Player goes first and will have the option to hit or stand. If hit, their hand score increases and another card is shown.
+ */
+
+//enums and tostring
 class Card {
     constructor(name, value, imgUp, imgDown, faceUp) {
         this.name = name,
-            this.value = value,
-            this.imgUp = imgUp,
-            this.imgDown = imgDown,
-            this.faceUp = faceUp
+        this.value = value,
+        this.imgUp = imgUp,
+        this.imgDown = imgDown,
+        this.faceUp = faceUp
     }
 }
 
@@ -44,7 +48,7 @@ let twoOfDiamonds = new Card('Two of Diamonds', 2, "images/2D.png", "images/red_
 //Hold all the Cards with an Array
 let cardArray = [aceOfSpades, aceOfHearts, aceOfClubs, aceOfDiamonds, kingOfSpades, nineOfSpades, fiveOfSpades, fourOfSpades, threeOfSpades, queenOfHearts, tenOfHearts, sixOfHearts, threeOfHearts, twoOfHearts, jackOfClubs, sevenOfClubs, fourOfClubs, threeOfClubs, twoOfClubs, eightOfDiamonds, fiveOfDiamonds, fourOfDiamonds, threeOfDiamonds, twoOfDiamonds];
 
-console.log(`cardArray length is ${cardArray.length}`)
+// console.log(`cardArray length is ${cardArray.length}`)
 
 //Card Slots
 let playerCardOne = document.getElementById('playerOne');
@@ -60,6 +64,9 @@ let dealerCardThree = document.getElementById('dealerThree');
 let dealerCardFour = document.getElementById('dealerFour');
 let dealerCardFive = document.getElementById('dealerFive');
 let dealerCardSix = document.getElementById('dealerSix');
+
+//Player and Dealer Cards
+let cardOne, cardTwo, cardThree, cardFour, cardFive, cardSix, cardSeven, cardEight, cardNine, cardTen, cardEleven, cardTwelve,cardThirteen, cardFourTeen;
 
 //Wager, Balance and Current Hand
 let dealerHand = document.getElementById('dealerHand');
@@ -79,7 +86,14 @@ let playerScore, dealerScore;
 let balance = 500;
 let wager = 25;
 
+//Booleans
 let playerTurn = true;
+let playerWin = false;
+let dealerWin = false;
+let blackJack = false;
+
+let count = 0;
+
 
 const changeWager = () => {
     let wagerPrompt = prompt('How much would you like to wager per hand?')
@@ -87,7 +101,7 @@ const changeWager = () => {
         wagerPrompt = prompt('Not enough money. Please enter a valid wager')
     }
     wagerId.innerHTML = `Current Wager: $${wagerPrompt}`
-    wager = wagerPrompt;
+    wager = Number(wagerPrompt);
 }
 
 const shuffleCards = (cardArr) => {
@@ -105,34 +119,53 @@ const shuffleCards = (cardArr) => {
     return cardDeck;
 }
 
+const reset = () => {
+    cardArray = [aceOfSpades, aceOfHearts, aceOfClubs, aceOfDiamonds, kingOfSpades, nineOfSpades, fiveOfSpades, fourOfSpades, threeOfSpades, queenOfHearts, tenOfHearts, sixOfHearts, threeOfHearts, twoOfHearts, jackOfClubs, sevenOfClubs, fourOfClubs, threeOfClubs, twoOfClubs, eightOfDiamonds, fiveOfDiamonds, fourOfDiamonds, threeOfDiamonds, twoOfDiamonds];
 
+    playerCardOne.style.display = 'none';
+    playerCardTwo.style.display = 'none';
+    playerCardThree.style.display = 'none';
+    playerCardFour.style.display = 'none';
+    playerCardFive.style.display = 'none';
+    playerCardSix.style.display = 'none';
+    playerCardSeven.style.display = 'none';
+    dealerCardOne.style.display = 'none';
+    dealerCardTwo.style.display = 'none';
+    dealerCardThree.style.display = 'none';
+    dealerCardFour.style.display = 'none';
+    dealerCardFive.style.display = 'none';
+    dealerCardSix.style.display = 'none';
 
-/*
-Shuffle cards
-Deal cards
-calculate hand
+    dealerHand.innerHTML = `Dealer Hand:`
 
-*/
+    playerTurn = true;
+    dealerTurn = false;
+    playerWin = false;
+    blackJack = false;
+}
 
 const deal = (cardArr) => {
     //Subtract from Balance
-    balanceId.innerHTML = `Balance: $${balance - wager}`;
+    reset();
+    balance -= wager
+    balanceId.innerHTML = `Your Balance: $${balance}`;
 
     //Shuffle Deck and get first 4 cards
     let shuffleDeck = shuffleCards(cardArray);
-    console.log(shuffleDeck);
-    let cardOne = shuffleDeck.shift();
-    let cardTwo = shuffleDeck.shift();
-    let cardThree = shuffleDeck.shift();
-    let cardFour = shuffleDeck.shift();
-    let cardFive = shuffleDeck.shift();;
-    let cardSix = shuffleDeck.shift();
-    let cardSeven = shuffleDeck.shift();
-    let cardEight = shuffleDeck.shift();
-    let cardNine = shuffleDeck.shift();
-    let cardTen = shuffleDeck.shift();
-    let cardEleven = shuffleDeck.shift();
-    let cardTwelve = shuffleDeck.shift();
+    cardOne = shuffleDeck.shift(); //player card
+    cardTwo = shuffleDeck.shift(); //dealer card
+    cardThree = shuffleDeck.shift(); //player card
+    cardFour = shuffleDeck.shift(); //dealer card
+    cardFive = shuffleDeck.shift(); //player card
+    cardSix = shuffleDeck.shift(); //player card
+    cardSeven = shuffleDeck.shift(); //player card
+    cardEight = shuffleDeck.shift(); //player card
+    cardNine = shuffleDeck.shift(); //player card
+    cardTen = shuffleDeck.shift(); //dealer card
+    cardEleven = shuffleDeck.shift(); //dealer card
+    cardTwelve = shuffleDeck.shift(); //dealer card
+    cardThirteen = shuffleDeck.shift(); //dealer card
+    cardFourTeen = shuffleDeck.shift(); //dealer card
 
     //Deal Cards
     playerCardOne.src = cardOne.imgUp;
@@ -140,6 +173,7 @@ const deal = (cardArr) => {
 
     setTimeout(function () {
         dealerCardOne.src = cardTwo.imgDown;
+        console.log(`Card down is: ${cardTwo.name}`)
         dealerCardOne.style.display = 'block';
     }, 700)
 
@@ -161,190 +195,14 @@ const deal = (cardArr) => {
     dealerScore = cardTwo.value + cardFour.value;
     handScore.innerHTML = `Current Hand: ${playerScore}`
 
+    setTimeout(blackjack, 2001);
+
     //Handle the Hit button    
-    let count = 0;
-    hitButton.addEventListener('click', () => {
-        count += 1;
-        if (count === 1) {
-            playerCardThree.src = cardFive.imgUp;
-            playerCardThree.style.display = 'block'
-            playerScore += cardFive.value;
-            handScore.innerHTML = `Current Hand: ${playerScore}`;
-        } else if (count === 2) {
-            playerCardFour.src = cardSix.imgUp;
-            playerCardFour.style.display = 'block'
-            playerScore += cardSix.value;
-            handScore.innerHTML = `Current Hand: ${playerScore}`;
-        } else if (count === 3) {
-            playerCardFive.src = cardSeven.imgUp;
-            playerCardFive.style.display = 'block'
-            playerScore += cardSeven.value;
-            handScore.innerHTML = `Current Hand: ${playerScore}`;
-        } else if (count === 4) {
-            playerCardSix.src = cardEight.imgUp;
-            playerCardSix.style.display = 'block';
-            playerScore += cardEight.value;
-            handScore.innerHTML = `Current Hand: ${playerScore}`;
-        }
-    })
+    count = 0;
+    hitButton.addEventListener('click', hitCards)
 
     //Handle the Stand Button
-    standButton.addEventListener('click', () => {
-        standButton.style.display = 'none';
-        hitButton.style.display = 'none';
-        playerTurn = false;
-
-        //Deal Dealer Cards
-        if (!playerTurn) {
-            dealerCardOne.src = cardTwo.imgUp;
-            dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`
-            if (count === 0 && dealerScore < 16) {
-                setTimeout(() => {
-                    dealerCardThree.src = cardFive.imgUp;
-                    dealerCardThree.style.display = 'block';
-                }, 500);
-                dealerScore += cardFive.value;
-                if (dealerScore < 16) {
-                    setTimeout(() => {
-                        dealerCardFour.src = cardSix.imgUp;
-                        dealerCardFour.style.display = 'block';
-                    }, 1000);
-                    dealerScore += cardSix.value;
-                    if (dealerScore < 16) {
-                        setTimeout(() => {
-                            dealerCardFive.src = cardSeven.imgUp;
-                            dealerCardFive.style.display = 'block';
-                        }, 2000);
-                        dealerScore += cardSeven.value;
-                        if (dealerScore < 16) {
-                            setTimeout(() => {
-                                dealerCardSix.src = cardEight.imgUp;
-                                dealerCardSix.style.display = 'block';
-                            }, 3000);
-                            dealerScore += cardEight.value;
-                        }
-                    }
-                }
-            } else if (count === 1 && dealerScore < 16) {
-                setTimeout(() => {
-                    dealerCardThree.src = cardSix.imgUp;
-                    dealerCardThree.style.display = 'block';
-                }, 500);
-                dealerScore += cardSix.value;
-                if (dealerScore < 16) {
-                    setTimeout(() => {
-                        dealerCardFour.src = cardSeven.imgUp;
-                        dealerCardFour.style.display = 'block';
-                    }, 1000);
-                    dealerScore += cardSeven.value;
-                    if (dealerScore < 16) {
-                        setTimeout(() => {
-                            dealerCardFive.src = cardEight.imgUp;
-                            dealerCardFive.style.display = 'block';
-                        }, 2000);
-                        dealerScore += cardEight.value;
-                        if (dealerScore < 16) {
-                            setTimeout(() => {
-                                dealerCardSix.src = cardNine.imgUp;
-                                dealerCardSix.style.display = 'block';
-                            }, 3000);
-                            dealerScore += cardNine.value;
-                        }
-                    }
-
-                }
-            } else if (count === 2 && dealerScore < 16) {
-                setTimeout(() => {
-                    dealerCardThree.src = cardSeven.imgUp;
-                    dealerCardThree.style.display = 'block';
-                }, 500);
-                dealerScore += cardSeven.value;
-                if (dealerScore < 16) {
-                    setTimeout(() => {
-                        dealerCardFour.src = cardEight.imgUp;
-                        dealerCardFour.style.display = 'block';
-                    }, 1000);
-                    dealerScore += cardEight.value;
-                    if (dealerScore < 16) {
-                        setTimeout(() => {
-                            dealerCardFive.src = cardNine.imgUp;
-                            dealerCardFive.style.display = 'block';
-                        }, 2000);
-                        dealerScore += cardNine.value;
-                        if (dealerScore < 16) {
-                            setTimeout(() => {
-                                dealerCardSix.src = cardTen.imgUp;
-                                dealerCardSix.style.display = 'block';                                
-                            }, 3000);
-                            dealerScore += cardTen.value;
-                        }
-                    }
-
-                }
-            } else if (count === 3 && dealerScore < 16) {
-                setTimeout(() => {
-                    dealerCardThree.src = cardEight.imgUp;
-                    dealerCardThree.style.display = 'block';
-                }, 500);
-                dealerScore += cardEight.value;
-                if (dealerScore < 16) {
-                    setTimeout(() => {
-                        dealerCardFour.src = cardNine.imgUp;
-                        dealerCardFour.style.display = 'block';
-                    }, 1000);
-                    dealerScore += cardNine.value;
-                    if (dealerScore < 16) {
-                        setTimeout(() => {
-                            dealerCardFive.src = cardTen.imgUp;
-                            dealerCardFive.style.display = 'block';
-                        }, 2000);
-                        dealerScore += cardTen.value;
-                        if (dealerScore < 16) {
-                            setTimeout(() => {
-                                dealerCardSix.src = cardEleven.imgUp;
-                                dealerCardSix.style.display = 'block';
-                                
-                            }, 3000);
-                            dealerScore += cardEleven.value;
-                        }
-                    }
-
-                }
-            } else if (count === 4 && dealerScore < 16) {
-                setTimeout(() => {
-                    dealerCardThree.src = cardNine.imgUp;
-                    dealerCardThree.style.display = 'block';
-                }, 500);
-                dealerScore += cardNine.value;
-                if (dealerScore < 16) {
-                    setTimeout(() => {
-                        dealerCardFour.src = cardTen.imgUp;
-                        dealerCardFour.style.display = 'block';
-                    }, 1000);
-                    dealerScore += cardTen.value;
-                    if (dealerScore < 16) {
-                        setTimeout(() => {
-                            dealerCardFive.src = cardEleven.imgUp;
-                            dealerCardFive.style.display = 'block';
-                        }, 2000);
-                        dealerScore += cardEleven.value;
-                        if (dealerScore < 16) {
-                            setTimeout(() => {
-                                dealerCardSix.src = cardTwelve.imgUp;
-                                dealerCardSix.style.display = 'block';
-                                
-                            }, 3000);
-                            dealerScore += cardTwelve.value;
-                        }
-                    }
-
-                }
-            }
-        }
-    })
-
-
-
+    standButton.addEventListener('click', dealerCards);
 
 }
 
@@ -356,3 +214,190 @@ const hitOrStandDisplay = () => {
     newGameButton.style.display = 'none'
 }
 
+
+const hitCards = () => {        
+    count += 1;
+    if (count === 1) {
+        playerCardThree.src = cardFive.imgUp;
+        playerCardThree.style.display = 'block'
+        playerScore += cardFive.value;
+        handScore.innerHTML = `Your Hand: ${playerScore}`;
+        console.log(count)
+        checkForBust();
+    } else if (count === 2) {
+        playerCardFour.src = cardSix.imgUp;
+        playerCardFour.style.display = 'block'
+        playerScore += cardSix.value;
+        handScore.innerHTML = `Your Hand: ${playerScore}`;
+        console.log(count)
+        checkForBust();
+    } else if (count === 3) {
+        playerCardFive.src = cardSeven.imgUp;
+        playerCardFive.style.display = 'block'
+        playerScore += cardSeven.value;
+        handScore.innerHTML = `Your Hand: ${playerScore}`;
+        console.log(count)
+        checkForBust();
+    } else if (count === 4) {
+        playerCardSix.src = cardEight.imgUp;
+        playerCardSix.style.display = 'block';
+        playerScore += cardEight.value;
+        handScore.innerHTML = `Your Hand: ${playerScore}`;
+        console.log(count)
+        checkForBust();
+    } else if (count === 5) {
+        playerCardSeven.src = cardNine.imgUp;
+        playerCardSeven.style.display = 'block';
+        playerScore += cardNine.value;
+        handScore.innerHTML = `Your Hand: ${playerScore}`;
+        console.log(count)
+        checkForBust();   
+    }
+}
+
+const dealerCards = () => {
+    standButton.style.display = 'none';
+    hitButton.style.display = 'none';
+    dealerTurn = true;
+    playerTurn = false;
+
+    //Deal Dealer Cards
+    if (!playerTurn) {
+        dealerCardOne.src = cardTwo.imgUp;
+        dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
+        checkForBust();
+        determineWinner();
+        if (dealerScore <= 16) {
+            setTimeout(() => {
+                dealerCardThree.src = cardTen.imgUp;
+                dealerCardThree.style.display = 'block';
+                dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
+            }, 500);
+            dealerScore += cardTen.value;
+            checkForBust();
+            determineWinner();
+        }
+            if (dealerScore <= 16) {
+                setTimeout(() => {
+                    dealerCardFour.src = cardEleven.imgUp;
+                    dealerCardFour.style.display = 'block';
+                    dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
+                }, 1000);
+                dealerScore += cardEleven.value;
+                checkForBust();
+                determineWinner();
+            }
+                if (dealerScore <= 16) {
+                    setTimeout(() => {
+                        dealerCardFive.src = cardTwelve.imgUp;
+                        dealerCardFive.style.display = 'block';
+                        dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
+                    }, 2000);
+                    dealerScore += cardTwelve.value;
+                    checkForBust();
+                    determineWinner();
+                }
+                if (dealerScore <= 16) {
+                    setTimeout(() => {
+                        dealerCardSix.src = cardThirteen.imgUp;
+                        dealerCardSix.style.display = 'block';
+                        dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
+                    }, 3000);
+                    dealerScore += cardThirteen.value;
+                    checkForBust();
+                    determineWinner();
+                }
+        
+    }
+}
+
+const winner = () => {
+    if (blackJack){
+        console.log('blackjack pays')
+        balance += wager + (wager * (3/2));
+        balanceId.innerHTML = `Your Balance: $${balance}`;
+
+    } else if (playerWin) {
+        console.log('regular winner')
+        balance += wager + wager;
+        balanceId.innerHTML = `Your Balance: $${balance}`;
+        
+    } else if (!playerTurn && !dealerTurn && playerScore === dealerScore) {
+        console.log('push man')
+        balance += wager;
+        balanceId.innerHTML = `Your Balance: $${balance}`;
+    }
+}
+
+/*
+ToDo:
+handling an Ace as 11 or 1
+dislpaying the player score when there is an Ace
+*/
+
+const blackjack = () => {
+    if (cardOne.value + cardThree.value === 21 && cardTwo.value + cardFour.value !== 21) {
+        //player wins
+        console.log('player bj')
+        playerTurn = false;
+        dealerTurn = false;
+        blackJack = true;
+        determineWinner();
+        gameOver()
+    } else if (cardOne.value + cardThree.value !== 21 && cardTwo.value + cardFour.value === 21) {
+        //dealer wins
+        playerTurn = false;
+        dealerTurn = false;
+        gameOver()
+        dealerCardOne.src = cardTwo.imgUp;
+    } else if (cardOne.value + cardThree.value === 21 && cardTwo.value + cardFour.value === 21) {
+        //push
+        playerTurn = false;
+        dealerTurn = false;
+        determineWinner();
+    }
+}
+
+const checkForBust = () => {
+    if (playerScore > 21) {
+        gameOver()
+        dealerWin = true;
+        dealerTurn = false;
+        playerTurn = false;
+        console.log('player bust hit')
+    } else if (!playerTurn && dealerScore > 21) {
+        gameOver();
+        playerWin = true;
+        dealerTurn = false;
+        playerTurn = false;
+        console.log('dealer bust hit')
+    } else if (dealerScore <= 21 && dealerScore >= 17 && !playerTurn) {
+        gameOver();
+        dealerCardOne.src = cardTwo.imgUp;
+        dealerTurn = false;
+        console.log('no bust hit')
+    }
+}
+
+const determineWinner = () => {
+    if (!playerTurn && !dealerTurn){
+        if (playerScore > dealerScore || dealerScore > 21){
+            playerWin = true;
+            winner();
+            gameOver();
+        } else if(playerScore === dealerScore){
+            winner();
+            gameOver();
+        } else {
+            gameOver();
+        }
+    }
+}
+
+const gameOver = () => {
+    standButton.style.display = 'none';
+    hitButton.style.display = 'none';
+    dealButton.style.display = 'block';
+    wagerButton.style.display = 'block';
+    newGameButton.style.display = 'block';
+}

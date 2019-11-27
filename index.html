@@ -75,7 +75,7 @@
       />
       <button id="standBtn" class="btn btn-warning stand">Stand</button>
       <button id="hitBtn" class="btn btn-danger hit" onclick="">Hit</button>
-      <button id="deal" class="btn btn-success dealHand" onclick="deal()">
+      <button id="deal" class="btn btn-success dealHand" onclick="deal(cardArray)">
         Deal
       </button>
       <button id="wager" class="btn btn-primary wager" onclick="changeWager()">
@@ -87,11 +87,11 @@
         <div class="card-body">
           <h5 id="dealerHand" class="card-title">Dealer Hand: </h5>
           <br />
-          <h5 id="balanceDisplay" class="card-title">Balance: $500</h5>
+          <h5 id="balanceDisplay" class="card-title">Your Balance: $500</h5>
           <br />
           <h5 id="wagerDisplay">Current Wager: $25</h5>
           <br />
-          <h5 id="handScore">Current Hand: 0</h5>
+          <h5 id="handScore">Your Hand:  </h5>
         </div>
       </div>
     </div>
