@@ -4,49 +4,76 @@
 
 //enums and tostring
 class Card {
-    constructor(name, value, imgUp, imgDown, faceUp) {
+    constructor(name, value, imgUp, imgDown) {
         this.name = name,
-        this.value = value,
-        this.imgUp = imgUp,
-        this.imgDown = imgDown,
-        this.faceUp = faceUp
+            this.value = value,
+            this.imgUp = imgUp,
+            this.imgDown = imgDown
     }
 }
 
 //Hearts
-let aceOfHearts = new Card('Ace of Hearts', 11, "images/AH.png", "images/red_back.png", true);
-let queenOfHearts = new Card('Queen of Hearts', 10, "images/QH.png", "images/red_back.png", true);
-let tenOfHearts = new Card('Ten of Hearts', 10, "images/10H.png", "images/red_back.png", true);
-let sixOfHearts = new Card('Six Of Hearts', 6, "images/6H.png", "images/red_back.png", true);
-let threeOfHearts = new Card('Three Of Hearts', 3, "images/3H.png", "images/red_back.png", true);
-let twoOfHearts = new Card('Two Of Hearts', 2, "images/2H.png", "images/red_back.png", true);
+let aceOfHearts = new Card('Ace of Hearts', 11, "images/AH.png", "images/red_back.png");
+let kingOfHearts = new Card('King of Hearts', 10, "images/KH.png", "images/red_back.png")
+let queenOfHearts = new Card('Queen of Hearts', 10, "images/QH.png", "images/red_back.png");
+let jackOfHearts = new Card('Jack of Hearts', 10, "images/JH.png", "images/red_back.png");
+let tenOfHearts = new Card('Ten of Hearts', 10, "images/10H.png", "images/red_back.png");
+let nineOfHearts = new Card('Nine Of Hearts', 9, "images/9H.png", "images/red_back.png");
+let eightOfHearts = new Card('Eight Of Hearts', 8, "images/8H.png", "images/red_back.png");
+let sevenOfHearts = new Card('Seven Of Hearts', 7, "images/7H.png", "images/red_back.png");
+let sixOfHearts = new Card('Six Of Hearts', 6, "images/6H.png", "images/red_back.png");
+let fiveOfHearts = new Card('Five Of Hearts', 5, "images/5H.png", "images/red_back.png");
+let fourOfHearts = new Card('Four Of Hearts', 4, "images/4H.png", "images/red_back.png");
+let threeOfHearts = new Card('Three Of Hearts', 3, "images/3H.png", "images/red_back.png");
+let twoOfHearts = new Card('Two Of Hearts', 2, "images/2H.png", "images/red_back.png");
 
 //Spades
-let aceOfSpades = new Card('Ace of Spades', 11, "images/AS.png", "images/red_back.png", true);
-let kingOfSpades = new Card('King of Spades', 10, "images/KS.png", "images/red_back.png", true);
-let nineOfSpades = new Card('Nine of Spades', 9, "images/9S.png", "images/red_back.png", true);
-let fiveOfSpades = new Card('Five of Spades', 5, "images/5S.png", "images/red_back.png", true);
-let fourOfSpades = new Card('Four of Spades', 4, "images/4S.png", "images/red_back.png", true);
-let threeOfSpades = new Card('Three of Spades', 3, "images/3S.png", "images/red_back.png", true);
+let aceOfSpades = new Card('Ace of Spades', 11, "images/AS.png", "images/red_back.png");
+let kingOfSpades = new Card('King of Spades', 10, "images/KS.png", "images/red_back.png");
+let queenOfSpades = new Card('Queen of Spades', 10, "images/QS.png", "images/red_back.png");
+let jackOfSpades = new Card('Jack of Spades', 10, "images/JS.png", "images/red_back.png");
+let tenOfSpades = new Card('Queen of Spades', 10, "images/10S.png", "images/red_back.png");
+let nineOfSpades = new Card('Nine of Spades', 9, "images/9S.png", "images/red_back.png");
+let eightOfSpades = new Card('Eight of Spades', 8, "images/8S.png", "images/red_back.png");
+let sevenOfSpades = new Card('Seven of Spades', 7, "images/7S.png", "images/red_back.png");
+let sixOfSpades = new Card('Six of Spades', 6, "images/6S.png", "images/red_back.png");
+let fiveOfSpades = new Card('Five of Spades', 5, "images/5S.png", "images/red_back.png");
+let fourOfSpades = new Card('Four of Spades', 4, "images/4S.png", "images/red_back.png")
+let threeOfSpades = new Card('Three of Spades', 3, "images/3S.png", "images/red_back.png");
+let twoOfSpades = new Card('Two of Spades', 2, "images/2S.png", "images/red_back.png");
 
 //Clubs
-let aceOfClubs = new Card('Ace of Clubs', 11, "images/AC.png", "images/red_back.png", true);
-let jackOfClubs = new Card('Jack of Clubs', 10, "images/JC.png", "images/red_back.png", true);
-let sevenOfClubs = new Card('Seven of Clubs', 7, "images/7C.png", "images/red_back.png", true);
-let fourOfClubs = new Card('Four of Clubs', 4, "images/4C.png", "images/red_back.png", true);
-let threeOfClubs = new Card('Three of Clubs', 3, "images/3C.png", "images/red_back.png", true);
-let twoOfClubs = new Card('Two of Clubs', 2, "images/2C.png", "images/red_back.png", true);
+let aceOfClubs = new Card('Ace of Clubs', 11, "images/AC.png", "images/red_back.png");
+let kingOfClubs = new Card('King of Clubs', 10, "images/KC.png", "images/red_back.png");
+let queenOfClubs = new Card('Queen of Clubs', 10, "images/QC.png", "images/red_back.png");
+let jackOfClubs = new Card('Jack of Clubs', 10, "images/JC.png", "images/red_back.png");
+let tenOfClubs = new Card('Ten of Clubs', 10, "images/10C.png", "images/red_back.png");
+let nineOfClubs = new Card('Nine of Clubs', 9, "images/9C.png", "images/red_back.png");
+let eightOfClubs = new Card('Eight of Clubs', 8, "images/8C.png", "images/red_back.png");
+let sevenOfClubs = new Card('Seven of Clubs', 7, "images/7C.png", "images/red_back.png");
+let sixOfClubs = new Card('Six of Clubs', 6, "images/6C.png", "images/red_back.png");
+let fiveOfClubs = new Card('Five of Clubs', 5, "images/5C.png", "images/red_back.png");
+let fourOfClubs = new Card('Four of Clubs', 4, "images/4C.png", "images/red_back.png");
+let threeOfClubs = new Card('Three of Clubs', 3, "images/3C.png", "images/red_back.png");
+let twoOfClubs = new Card('Two of Clubs', 2, "images/2C.png", "images/red_back.png");
 
 //Diamonds
-let aceOfDiamonds = new Card('Ace of Diamonds', 11, "images/AD.png", "images/red_back.png", true);
-let eightOfDiamonds = new Card('Eight of Diamonds', 8, "images/8D.png", "images/red_back.png", true);
-let fiveOfDiamonds = new Card('Five of Diamonds', 5, "images/5D.png", "images/red_back.png", true);
-let fourOfDiamonds = new Card('Four of Diamonds', 4, "images/4D.png", "images/red_back.png", true);
-let threeOfDiamonds = new Card('Three of Diamonds', 3, "images/3D.png", "images/red_back.png", true);
-let twoOfDiamonds = new Card('Two of Diamonds', 2, "images/2D.png", "images/red_back.png", true);
+let aceOfDiamonds = new Card('Ace of Diamonds', 11, "images/AD.png", "images/red_back.png");
+let kingOfDiamonds = new Card('King of Diamonds', 10, "images/KD.png", "images/red_back.png");
+let queenOfDiamonds = new Card('Queen of Diamonds', 10, "images/QD.png", "images/red_back.png");
+let jackOfDiamonds = new Card('Jack of Diamonds', 10, "images/JD.png", "images/red_back.png");
+let tenOfDiamonds = new Card('Ten of Diamonds', 10, "images/10D.png", "images/red_back.png");
+let nineOfDiamonds = new Card('Nine of Diamonds', 9, "images/9D.png", "images/red_back.png");
+let eightOfDiamonds = new Card('Eight of Diamonds', 8, "images/8D.png", "images/red_back.png");
+let sevenOfDiamonds = new Card('Seven of Diamonds', 7, "images/7D.png", "images/red_back.png");
+let sixOfDiamonds = new Card('Six of Diamonds', 6, "images/6D.png", "images/red_back.png");
+let fiveOfDiamonds = new Card('Five of Diamonds', 5, "images/5D.png", "images/red_back.png");
+let fourOfDiamonds = new Card('Four of Diamonds', 4, "images/4D.png", "images/red_back.png");
+let threeOfDiamonds = new Card('Three of Diamonds', 3, "images/3D.png", "images/red_back.png");
+let twoOfDiamonds = new Card('Two of Diamonds', 2, "images/2D.png", "images/red_back.png");
 
 //Hold all the Cards with an Array
-let cardArray = [aceOfSpades, aceOfHearts, aceOfClubs, aceOfDiamonds, kingOfSpades, nineOfSpades, fiveOfSpades, fourOfSpades, threeOfSpades, queenOfHearts, tenOfHearts, sixOfHearts, threeOfHearts, twoOfHearts, jackOfClubs, sevenOfClubs, fourOfClubs, threeOfClubs, twoOfClubs, eightOfDiamonds, fiveOfDiamonds, fourOfDiamonds, threeOfDiamonds, twoOfDiamonds];
+let cardArray = [twoOfClubs, threeOfClubs, fourOfClubs, fiveOfClubs, sixOfClubs, sevenOfClubs, eightOfClubs, nineOfClubs, tenOfClubs, jackOfClubs, queenOfClubs, kingOfClubs, aceOfClubs, twoOfDiamonds, threeOfDiamonds, fourOfDiamonds, fiveOfDiamonds, sixOfDiamonds, sevenOfDiamonds, eightOfDiamonds, nineOfDiamonds, tenOfDiamonds, jackOfDiamonds, queenOfDiamonds, kingOfDiamonds, aceOfDiamonds, twoOfSpades, threeOfSpades, fourOfSpades, fiveOfSpades, sixOfSpades, sevenOfSpades, eightOfSpades, nineOfSpades, tenOfSpades, jackOfSpades, queenOfSpades, kingOfSpades, aceOfSpades, twoOfHearts, threeOfHearts, fourOfHearts, fiveOfHearts, sixOfHearts, sevenOfHearts, eightOfHearts, nineOfHearts, tenOfHearts, jackOfHearts, queenOfHearts, kingOfHearts, aceOfHearts];
 
 // console.log(`cardArray length is ${cardArray.length}`)
 
@@ -66,7 +93,7 @@ let dealerCardFive = document.getElementById('dealerFive');
 let dealerCardSix = document.getElementById('dealerSix');
 
 //Player and Dealer Cards
-let cardOne, cardTwo, cardThree, cardFour, cardFive, cardSix, cardSeven, cardEight, cardNine, cardTen, cardEleven, cardTwelve,cardThirteen, cardFourTeen;
+let cardOne, cardTwo, cardThree, cardFour, cardFive, cardSix, cardSeven, cardEight, cardNine, cardTen, cardEleven, cardTwelve, cardThirteen, cardFourTeen;
 
 //Wager, Balance and Current Hand
 let dealerHand = document.getElementById('dealerHand');
@@ -94,6 +121,18 @@ let blackJack = false;
 
 let count = 0;
 
+const newGame = () => {
+    balance = 500;
+    wager = 25;
+    balanceId.innerHTML = `Your Balance: $${balance}`;
+    wagerId.innerHTML = `Current Wager: $25`;
+    handScore.innerHTML = 'Your Hand: ';
+    reset();
+    playerScore = 0;
+    dealerScore = 0;
+    console.log('clicked')
+}
+
 
 const changeWager = () => {
     let wagerPrompt = prompt('How much would you like to wager per hand?')
@@ -120,7 +159,7 @@ const shuffleCards = (cardArr) => {
 }
 
 const reset = () => {
-    cardArray = [aceOfSpades, aceOfHearts, aceOfClubs, aceOfDiamonds, kingOfSpades, nineOfSpades, fiveOfSpades, fourOfSpades, threeOfSpades, queenOfHearts, tenOfHearts, sixOfHearts, threeOfHearts, twoOfHearts, jackOfClubs, sevenOfClubs, fourOfClubs, threeOfClubs, twoOfClubs, eightOfDiamonds, fiveOfDiamonds, fourOfDiamonds, threeOfDiamonds, twoOfDiamonds];
+    cardArray = [twoOfClubs, threeOfClubs, fourOfClubs, fiveOfClubs, sixOfClubs, sevenOfClubs, eightOfClubs, nineOfClubs, tenOfClubs, jackOfClubs, queenOfClubs, kingOfClubs, aceOfClubs, twoOfDiamonds, threeOfDiamonds, fourOfDiamonds, fiveOfDiamonds, sixOfDiamonds, sevenOfDiamonds, eightOfDiamonds, nineOfDiamonds, tenOfDiamonds, jackOfDiamonds, queenOfDiamonds, kingOfDiamonds, aceOfDiamonds, twoOfSpades, threeOfSpades, fourOfSpades, fiveOfSpades, sixOfSpades, sevenOfSpades, eightOfSpades, nineOfSpades, tenOfSpades, jackOfSpades, queenOfSpades, kingOfSpades, aceOfSpades, twoOfHearts, threeOfHearts, fourOfHearts, fiveOfHearts, sixOfHearts, sevenOfHearts, eightOfHearts, nineOfHearts, tenOfHearts, jackOfHearts, queenOfHearts, kingOfHearts, aceOfHearts];
 
     playerCardOne.style.display = 'none';
     playerCardTwo.style.display = 'none';
@@ -145,6 +184,9 @@ const reset = () => {
 }
 
 const deal = (cardArr) => {
+    if (wager > balance) {
+        return alert(`Insufficient Funds. You can't wager more than in your balance`);
+    }
     //Subtract from Balance
     reset();
     balance -= wager
@@ -173,7 +215,7 @@ const deal = (cardArr) => {
 
     setTimeout(function () {
         dealerCardOne.src = cardTwo.imgDown;
-        console.log(`Card down is: ${cardTwo.name}`)
+        // console.log(`Card down is: ${cardTwo.name}`)
         dealerCardOne.style.display = 'block';
     }, 700)
 
@@ -215,43 +257,43 @@ const hitOrStandDisplay = () => {
 }
 
 
-const hitCards = () => {        
+const hitCards = () => {
     count += 1;
     if (count === 1) {
         playerCardThree.src = cardFive.imgUp;
         playerCardThree.style.display = 'block'
         playerScore += cardFive.value;
         handScore.innerHTML = `Your Hand: ${playerScore}`;
-        console.log(count)
+        // console.log(count)
         checkForBust();
     } else if (count === 2) {
         playerCardFour.src = cardSix.imgUp;
         playerCardFour.style.display = 'block'
         playerScore += cardSix.value;
         handScore.innerHTML = `Your Hand: ${playerScore}`;
-        console.log(count)
+        // console.log(count)
         checkForBust();
     } else if (count === 3) {
         playerCardFive.src = cardSeven.imgUp;
         playerCardFive.style.display = 'block'
         playerScore += cardSeven.value;
         handScore.innerHTML = `Your Hand: ${playerScore}`;
-        console.log(count)
+        // console.log(count)
         checkForBust();
     } else if (count === 4) {
         playerCardSix.src = cardEight.imgUp;
         playerCardSix.style.display = 'block';
         playerScore += cardEight.value;
         handScore.innerHTML = `Your Hand: ${playerScore}`;
-        console.log(count)
+        // console.log(count)
         checkForBust();
     } else if (count === 5) {
         playerCardSeven.src = cardNine.imgUp;
         playerCardSeven.style.display = 'block';
         playerScore += cardNine.value;
         handScore.innerHTML = `Your Hand: ${playerScore}`;
-        console.log(count)
-        checkForBust();   
+        // console.log(count)
+        checkForBust();
     }
 }
 
@@ -277,53 +319,53 @@ const dealerCards = () => {
             checkForBust();
             determineWinner();
         }
-            if (dealerScore <= 16) {
-                setTimeout(() => {
-                    dealerCardFour.src = cardEleven.imgUp;
-                    dealerCardFour.style.display = 'block';
-                    dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
-                }, 1000);
-                dealerScore += cardEleven.value;
-                checkForBust();
-                determineWinner();
-            }
-                if (dealerScore <= 16) {
-                    setTimeout(() => {
-                        dealerCardFive.src = cardTwelve.imgUp;
-                        dealerCardFive.style.display = 'block';
-                        dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
-                    }, 2000);
-                    dealerScore += cardTwelve.value;
-                    checkForBust();
-                    determineWinner();
-                }
-                if (dealerScore <= 16) {
-                    setTimeout(() => {
-                        dealerCardSix.src = cardThirteen.imgUp;
-                        dealerCardSix.style.display = 'block';
-                        dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
-                    }, 3000);
-                    dealerScore += cardThirteen.value;
-                    checkForBust();
-                    determineWinner();
-                }
-        
+        if (dealerScore <= 16) {
+            setTimeout(() => {
+                dealerCardFour.src = cardEleven.imgUp;
+                dealerCardFour.style.display = 'block';
+                dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
+            }, 1000);
+            dealerScore += cardEleven.value;
+            checkForBust();
+            determineWinner();
+        }
+        if (dealerScore <= 16) {
+            setTimeout(() => {
+                dealerCardFive.src = cardTwelve.imgUp;
+                dealerCardFive.style.display = 'block';
+                dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
+            }, 2000);
+            dealerScore += cardTwelve.value;
+            checkForBust();
+            determineWinner();
+        }
+        if (dealerScore <= 16) {
+            setTimeout(() => {
+                dealerCardSix.src = cardThirteen.imgUp;
+                dealerCardSix.style.display = 'block';
+                dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
+            }, 3000);
+            dealerScore += cardThirteen.value;
+            checkForBust();
+            determineWinner();
+        }
+
     }
 }
 
 const winner = () => {
-    if (blackJack){
-        console.log('blackjack pays')
-        balance += wager + (wager * (3/2));
+    if (blackJack) {
+        // console.log('blackjack pays')
+        balance += wager + (wager * (3 / 2));
         balanceId.innerHTML = `Your Balance: $${balance}`;
 
     } else if (playerWin) {
-        console.log('regular winner')
+        // console.log('regular winner')
         balance += wager + wager;
         balanceId.innerHTML = `Your Balance: $${balance}`;
-        
+
     } else if (!playerTurn && !dealerTurn && playerScore === dealerScore) {
-        console.log('push man')
+        // console.log('push man')
         balance += wager;
         balanceId.innerHTML = `Your Balance: $${balance}`;
     }
@@ -338,7 +380,7 @@ dislpaying the player score when there is an Ace
 const blackjack = () => {
     if (cardOne.value + cardThree.value === 21 && cardTwo.value + cardFour.value !== 21) {
         //player wins
-        console.log('player bj')
+        // console.log('player bj')
         playerTurn = false;
         dealerTurn = false;
         blackJack = true;
@@ -364,28 +406,28 @@ const checkForBust = () => {
         dealerWin = true;
         dealerTurn = false;
         playerTurn = false;
-        console.log('player bust hit')
+        // console.log('player bust hit')
     } else if (!playerTurn && dealerScore > 21) {
         gameOver();
         playerWin = true;
         dealerTurn = false;
         playerTurn = false;
-        console.log('dealer bust hit')
+        // console.log('dealer bust hit')
     } else if (dealerScore <= 21 && dealerScore >= 17 && !playerTurn) {
         gameOver();
         dealerCardOne.src = cardTwo.imgUp;
         dealerTurn = false;
-        console.log('no bust hit')
+        // console.log('no bust hit')
     }
 }
 
 const determineWinner = () => {
-    if (!playerTurn && !dealerTurn){
-        if (playerScore > dealerScore || dealerScore > 21){
+    if (!playerTurn && !dealerTurn) {
+        if (playerScore > dealerScore || dealerScore > 21) {
             playerWin = true;
             winner();
             gameOver();
-        } else if(playerScore === dealerScore){
+        } else if (playerScore === dealerScore) {
             winner();
             gameOver();
         } else {
