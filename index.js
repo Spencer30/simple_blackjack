@@ -8,14 +8,22 @@
 class Card {
     constructor(name, value, imgUp, imgDown) {
         this.name = name,
-            this.value = value,
-            this.imgUp = imgUp,
-            this.imgDown = imgDown
+        this.value = value,
+        this.imgUp = imgUp,
+        this.imgDown = imgDown
     }
 }
 
+class Ace extends Card {
+    constructor (name, value, imgUp, imgDown, altValue) {
+        super(name, value, imgUp, imgDown, altValue);
+        this.altValue = altValue        
+    }
+}
+
+
 //Hearts
-let aceOfHearts = new Card('Ace of Hearts', 11, "images/AH.png", "images/red_back.png");
+let aceOfHearts = new Ace('Ace of Hearts', 11,"images/AH.png", "images/red_back.png", 1);
 let kingOfHearts = new Card('King of Hearts', 10, "images/KH.png", "images/red_back.png")
 let queenOfHearts = new Card('Queen of Hearts', 10, "images/QH.png", "images/red_back.png");
 let jackOfHearts = new Card('Jack of Hearts', 10, "images/JH.png", "images/red_back.png");
@@ -30,7 +38,7 @@ let threeOfHearts = new Card('Three Of Hearts', 3, "images/3H.png", "images/red_
 let twoOfHearts = new Card('Two Of Hearts', 2, "images/2H.png", "images/red_back.png");
 
 //Spades
-let aceOfSpades = new Card('Ace of Spades', 11, "images/AS.png", "images/red_back.png");
+let aceOfSpades = new Ace('Ace of Spades', 11, "images/AS.png", "images/red_back.png", 1);
 let kingOfSpades = new Card('King of Spades', 10, "images/KS.png", "images/red_back.png");
 let queenOfSpades = new Card('Queen of Spades', 10, "images/QS.png", "images/red_back.png");
 let jackOfSpades = new Card('Jack of Spades', 10, "images/JS.png", "images/red_back.png");
@@ -45,7 +53,7 @@ let threeOfSpades = new Card('Three of Spades', 3, "images/3S.png", "images/red_
 let twoOfSpades = new Card('Two of Spades', 2, "images/2S.png", "images/red_back.png");
 
 //Clubs
-let aceOfClubs = new Card('Ace of Clubs', 11, "images/AC.png", "images/red_back.png");
+let aceOfClubs = new Ace('Ace of Clubs', 11,"images/AC.png", "images/red_back.png", 1);
 let kingOfClubs = new Card('King of Clubs', 10, "images/KC.png", "images/red_back.png");
 let queenOfClubs = new Card('Queen of Clubs', 10, "images/QC.png", "images/red_back.png");
 let jackOfClubs = new Card('Jack of Clubs', 10, "images/JC.png", "images/red_back.png");
@@ -60,7 +68,7 @@ let threeOfClubs = new Card('Three of Clubs', 3, "images/3C.png", "images/red_ba
 let twoOfClubs = new Card('Two of Clubs', 2, "images/2C.png", "images/red_back.png");
 
 //Diamonds
-let aceOfDiamonds = new Card('Ace of Diamonds', 11, "images/AD.png", "images/red_back.png");
+let aceOfDiamonds = new Ace('Ace of Diamonds', 11,"images/AD.png", "images/red_back.png", 1);
 let kingOfDiamonds = new Card('King of Diamonds', 10, "images/KD.png", "images/red_back.png");
 let queenOfDiamonds = new Card('Queen of Diamonds', 10, "images/QD.png", "images/red_back.png");
 let jackOfDiamonds = new Card('Jack of Diamonds', 10, "images/JD.png", "images/red_back.png");
@@ -111,7 +119,7 @@ let wagerButton = document.getElementById('wager');
 let newGameButton = document.getElementById('newGame');
 
 //Scoring Variables
-let playerScore, dealerScore;
+let playerScore, dealerScore, playerAltScore, dealerAltScore;
 let balance = 500;
 let wager = 25;
 
@@ -236,6 +244,7 @@ const deal = (cardArr) => {
 
     //Calculate Current Hand Score
     playerScore = cardOne.value + cardThree.value;
+    ifAce();
     dealerScore = cardTwo.value + cardFour.value;
     handScore.innerHTML = `Current Hand: ${playerScore}`
 
@@ -258,6 +267,17 @@ const hitOrStandDisplay = () => {
     newGameButton.style.display = 'none'
 }
 
+const ifAce = () => {
+    if (playerScore > 21) {
+        if (cardOne.altValue) {
+            playerScore = cardOne.altValue + cardThree.value;
+        } else {
+            playerScore = cardOne.value + cardThree.altValue;
+        }
+    }
+
+}
+
 
 const hitCards = () => {
     count += 1;
@@ -265,6 +285,12 @@ const hitCards = () => {
         playerCardThree.src = cardFive.imgUp;
         playerCardThree.style.display = 'block'
         playerScore += cardFive.value;
+        if (playerScore > 21) {
+            if (cardFive.altValue) {
+                playerScore -= cardFive.value;
+                playerScore += cardFive.altValue;
+            }
+        }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
         // console.log(count)
         checkForBust();
@@ -272,6 +298,12 @@ const hitCards = () => {
         playerCardFour.src = cardSix.imgUp;
         playerCardFour.style.display = 'block'
         playerScore += cardSix.value;
+        if (playerScore > 21) {
+            if (cardSix.altValue) {
+                playerScore -= cardSix.value;
+                playerScore += cardSix.altValue;
+            }
+        }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
         // console.log(count)
         checkForBust();
@@ -279,6 +311,12 @@ const hitCards = () => {
         playerCardFive.src = cardSeven.imgUp;
         playerCardFive.style.display = 'block'
         playerScore += cardSeven.value;
+        if (playerScore > 21) {
+            if (cardSeven.altValue) {
+                playerScore -= cardSeven.value;
+                playerScore += cardSeven.altValue;
+            }
+        }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
         // console.log(count)
         checkForBust();
@@ -286,6 +324,12 @@ const hitCards = () => {
         playerCardSix.src = cardEight.imgUp;
         playerCardSix.style.display = 'block';
         playerScore += cardEight.value;
+        if (playerScore > 21) {
+            if (cardEight.altValue) {
+                playerScore -= cardEight.value;
+                playerScore += cardEight.altValue;
+            }
+        }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
         // console.log(count)
         checkForBust();
@@ -293,6 +337,12 @@ const hitCards = () => {
         playerCardSeven.src = cardNine.imgUp;
         playerCardSeven.style.display = 'block';
         playerScore += cardNine.value;
+        if (playerScore > 21) {
+            if (cardNine.altValue) {
+                playerScore -= cardNine.value;
+                playerScore += cardNine.altValue;
+            }
+        }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
         // console.log(count)
         checkForBust();
@@ -318,6 +368,7 @@ const dealerCards = () => {
                 dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
             }, 500);
             dealerScore += cardTen.value;
+            
             checkForBust();
             determineWinner();
         }
@@ -445,3 +496,5 @@ const gameOver = () => {
     wagerButton.style.display = 'block';
     newGameButton.style.display = 'block';
 }
+
+
