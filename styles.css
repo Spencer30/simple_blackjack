@@ -125,8 +125,9 @@ body {
 .btn {
     position: absolute;
     height: 4rem;
-    width: 10rem;
+    width: 12rem;
     box-shadow: black;
+    font-size: 1.3rem;
 }
 
 .dealHand{
