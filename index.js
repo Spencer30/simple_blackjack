@@ -128,6 +128,8 @@ let playerTurn = true;
 let playerWin = false;
 let dealerWin = false;
 let blackJack = false;
+let cardOneAceAltOn = false;
+let cardThreeAceAltOn = false;
 
 let count = 0;
 
@@ -140,7 +142,6 @@ const newGame = () => {
     reset();
     playerScore = 0;
     dealerScore = 0;
-    console.log('clicked')
 }
 
 
@@ -191,6 +192,8 @@ const reset = () => {
     dealerTurn = false;
     playerWin = false;
     blackJack = false;
+    cardOneAceAltOn = false;
+    cardThreeAceAltOn = false;
 }
 
 const deal = (cardArr) => {
@@ -205,15 +208,15 @@ const deal = (cardArr) => {
     //Shuffle Deck and get first 4 cards
     let shuffleDeck = shuffleCards(cardArray);
     cardOne = shuffleDeck.shift(); //player card
-    cardTwo = shuffleDeck.shift(); //dealer card
-    cardThree = shuffleDeck.shift(); //player card
+    cardTwo = shuffleDeck.shift();//dealer card
+    cardThree = shuffleDeck.shift();//player card
     cardFour = shuffleDeck.shift(); //dealer card
     cardFive = shuffleDeck.shift(); //player card
     cardSix = shuffleDeck.shift(); //player card
     cardSeven = shuffleDeck.shift(); //player card
     cardEight = shuffleDeck.shift(); //player card
     cardNine = shuffleDeck.shift(); //player card
-    cardTen = shuffleDeck.shift(); //dealer card
+    cardTen = shuffleDeck.shift();//dealer card
     cardEleven = shuffleDeck.shift(); //dealer card
     cardTwelve = shuffleDeck.shift(); //dealer card
     cardThirteen = shuffleDeck.shift(); //dealer card
@@ -244,8 +247,8 @@ const deal = (cardArr) => {
 
     //Calculate Current Hand Score
     playerScore = cardOne.value + cardThree.value;
-    ifAce();
     dealerScore = cardTwo.value + cardFour.value;
+    ifAce();
     handScore.innerHTML = `Current Hand: ${playerScore}`
 
     setTimeout(blackjack, 2001);
@@ -271,13 +274,37 @@ const ifAce = () => {
     if (playerScore > 21) {
         if (cardOne.altValue) {
             playerScore = cardOne.altValue + cardThree.value;
+            cardOneAceAltOn = true;
         } else {
             playerScore = cardOne.value + cardThree.altValue;
+        }
+    } else if (dealerScore > 21) {
+        if (cardTwo.altValue) {
+            dealerScore = cardTwo.altValue + cardFour.value;
+        } else {
+            dealerScore = cardTwo.value + cardFour.altValue;
+        }
+    } else if (dealerScore === 17){
+        if (cardTwo.altValue) {
+            dealerScore = cardTwo.altValue + cardFour.value;
+            console.log(dealerScore)
+            console.log('this hit')
+        } else if (cardFour.altValue){
+            dealerScore = cardTwo.value + cardFour.altValue;
         }
     }
 
 }
 
+/*
+else if (cardOne.altValue && !cardThree.altValue) {
+    playerScore -= cardOne.value
+    playerScore += cardOne.altValue + cardSix.value
+} else if (!cardOne.altValue && cardThree.altValue) {
+    playerScore -= cardThree.value
+    playerScore += cardThree.altValue + cardSix.value
+}
+*/
 
 const hitCards = () => {
     count += 1;
@@ -289,6 +316,14 @@ const hitCards = () => {
             if (cardFive.altValue) {
                 playerScore -= cardFive.value;
                 playerScore += cardFive.altValue;
+            } else if (cardOne.altValue && !cardOneAceAltOn) {
+                playerScore -= cardOne.value
+                playerScore += cardOne.altValue;
+                cardOneAceAltOn = true;
+            } else if (cardThree.altValue && !cardThreeAceAltOn) {
+                playerScore -= cardThree.value;
+                playerScore += cardThree.altValue;
+                cardThreeAceAltOn = true;
             }
         }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
@@ -302,6 +337,14 @@ const hitCards = () => {
             if (cardSix.altValue) {
                 playerScore -= cardSix.value;
                 playerScore += cardSix.altValue;
+            } else if (cardOne.altValue && !cardOneAceAltOn) {
+                playerScore -= cardOne.value
+                playerScore += cardOne.altValue;
+                cardOneAceAltOn = true;
+            } else if (cardThree.altValue && !cardThreeAceAltOn) {
+                playerScore -= cardThree.value;
+                playerScore += cardThree.altValue;
+                cardThreeAceAltOn = true;
             }
         }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
@@ -315,6 +358,14 @@ const hitCards = () => {
             if (cardSeven.altValue) {
                 playerScore -= cardSeven.value;
                 playerScore += cardSeven.altValue;
+            } else if (cardOne.altValue && !cardOneAceAltOn) {
+                playerScore -= cardOne.value
+                playerScore += cardOne.altValue;
+                cardOneAceAltOn = true;
+            } else if (cardThree.altValue && !cardThreeAceAltOn) {
+                playerScore -= cardThree.value;
+                playerScore += cardThree.altValue;
+                cardThreeAceAltOn = true;
             }
         }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
@@ -328,6 +379,14 @@ const hitCards = () => {
             if (cardEight.altValue) {
                 playerScore -= cardEight.value;
                 playerScore += cardEight.altValue;
+            }else if (cardOne.altValue && !cardOneAceAltOn) {
+                playerScore -= cardOne.value
+                playerScore += cardOne.altValue;
+                cardOneAceAltOn = true;
+            } else if (cardThree.altValue && !cardThreeAceAltOn) {
+                playerScore -= cardThree.value;
+                playerScore += cardThree.altValue;
+                cardThreeAceAltOn = true;
             }
         }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
@@ -341,6 +400,14 @@ const hitCards = () => {
             if (cardNine.altValue) {
                 playerScore -= cardNine.value;
                 playerScore += cardNine.altValue;
+            } else if (cardOne.altValue && !cardOneAceAltOn) {
+                playerScore -= cardOne.value
+                playerScore += cardOne.altValue;
+                cardOneAceAltOn = true;
+            } else if (cardThree.altValue && !cardThreeAceAltOn) {
+                playerScore -= cardThree.value;
+                playerScore += cardThree.altValue;
+                cardThreeAceAltOn = true;
             }
         }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
