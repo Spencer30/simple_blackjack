@@ -148,10 +148,13 @@ const newGame = () => {
 const changeWager = () => {
     let wagerPrompt = prompt('How much would you like to wager per hand?')
     if (!wagerPrompt) {
-        wagerPrompt = wager
+        wagerPrompt = wager;
     }
     while (wagerPrompt > balance) {
         wagerPrompt = prompt('Not enough money. Please enter a valid wager')
+        if (!wagerPrompt) {
+            wagerPrompt = wager;
+        }
     }
     wagerId.innerHTML = `Current Wager: $${wagerPrompt}`
     wager = Number(wagerPrompt);
@@ -202,6 +205,10 @@ const reset = () => {
 const deal = (cardArr) => {
     if (wager > balance) {
         return alert(`Insufficient Funds. You can't wager more than in your balance`);
+    }
+
+    if (wager === 0) {
+        return alert('Your wager cannot be zero.')
     }
     //Subtract from Balance
     reset();
