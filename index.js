@@ -147,6 +147,9 @@ const newGame = () => {
 
 const changeWager = () => {
     let wagerPrompt = prompt('How much would you like to wager per hand?')
+    if (!wagerPrompt) {
+        wagerPrompt = wager
+    }
     while (wagerPrompt > balance) {
         wagerPrompt = prompt('Not enough money. Please enter a valid wager')
     }
