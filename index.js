@@ -110,6 +110,11 @@ let dealerHand = document.getElementById('dealerHand');
 let balanceId = document.getElementById('balanceDisplay');
 let wagerId = document.getElementById('wagerDisplay');
 let handScore = document.getElementById('handScore');
+let dealerHand2 = document.getElementById('dealerHand2');
+let balanceId2 = document.getElementById('balanceDisplay2');
+let wagerId2 = document.getElementById('wagerDisplay2');
+let handScore2 = document.getElementById('handScore2');
+
 
 //Buttons
 let standButton = document.getElementById('standBtn');
@@ -137,8 +142,11 @@ const newGame = () => {
     balance = 500;
     wager = 25;
     balanceId.innerHTML = `Your Balance: $${balance}`;
+    balanceId2.innerHTML = `Your Balance: $${balance}`;
     wagerId.innerHTML = `Current Wager: $25`;
+    wagerId2.innerHTML = `Current Wager: $25`;
     handScore.innerHTML = 'Your Hand: ';
+    handScore2.innerHTML = 'Your Hand: ';
     reset();
     playerScore = 0;
     dealerScore = 0;
@@ -157,6 +165,7 @@ const changeWager = () => {
         }
     }
     wagerId.innerHTML = `Current Wager: $${wagerPrompt}`
+    wagerId2.innerHTML = `Current Wager: $${wagerPrompt}`
     wager = Number(wagerPrompt);
 }
 
@@ -193,6 +202,7 @@ const reset = () => {
     dealerCardSix.style.display = 'none';
 
     dealerHand.innerHTML = `Dealer Hand:`
+    dealerHand2.innerHTML = `Dealer Hand:`
 
     playerTurn = true;
     dealerTurn = false;
@@ -214,6 +224,8 @@ const deal = (cardArr) => {
     reset();
     balance -= wager
     balanceId.innerHTML = `Your Balance: $${balance}`;
+    balanceId2.innerHTML = `Your Balance: $${balance}`;
+
 
     //Shuffle Deck and get first 4 cards
     let shuffleDeck = shuffleCards(cardArray);
@@ -259,8 +271,8 @@ const deal = (cardArr) => {
     playerScore = cardOne.value + cardThree.value;
     dealerScore = cardTwo.value + cardFour.value;
     ifAce();
-    handScore.innerHTML = `Current Hand: ${playerScore}`
-
+    handScore.innerHTML = `Current Hand: ${playerScore}`;
+    handScore2.innerHTML = `Current Hand: ${playerScore}`;
     setTimeout(blackjack, 2001);
 
     //Handle the Hit button    
@@ -275,7 +287,7 @@ const deal = (cardArr) => {
 const hitOrStandDisplay = () => {
     standButton.style.display = 'block';
     hitButton.style.display = 'block';
-    dealButton.style.display = 'none'
+    dealButton.style.visibility = 'hidden'
     wagerButton.style.display = 'none'
     newGameButton.style.display = 'none'
 }
@@ -337,6 +349,7 @@ const hitCards = () => {
             }
         }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
+        handScore2.innerHTML = `Current Hand: ${playerScore}`;
         // console.log(count)
         checkForBust();
     } else if (count === 2) {
@@ -358,6 +371,7 @@ const hitCards = () => {
             }
         }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
+        handScore2.innerHTML = `Current Hand: ${playerScore}`;
         // console.log(count)
         checkForBust();
     } else if (count === 3) {
@@ -379,6 +393,7 @@ const hitCards = () => {
             }
         }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
+        handScore2.innerHTML = `Current Hand: ${playerScore}`;
         // console.log(count)
         checkForBust();
     } else if (count === 4) {
@@ -400,6 +415,7 @@ const hitCards = () => {
             }
         }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
+        handScore2.innerHTML = `Current Hand: ${playerScore}`;
         // console.log(count)
         checkForBust();
     } else if (count === 5) {
@@ -421,6 +437,7 @@ const hitCards = () => {
             }
         }
         handScore.innerHTML = `Your Hand: ${playerScore}`;
+        handScore2.innerHTML = `Current Hand: ${playerScore}`;
         // console.log(count)
         checkForBust();
     }
@@ -436,6 +453,7 @@ const dealerCards = () => {
     if (!playerTurn) {
         dealerCardOne.src = cardTwo.imgUp;
         dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
+        dealerHand2.innerHTML = `Dealer Hand: ${dealerScore}`;
         checkForBust();
         determineWinner();
         if (dealerScore <= 16) {
@@ -443,6 +461,7 @@ const dealerCards = () => {
                 dealerCardThree.src = cardTen.imgUp;
                 dealerCardThree.style.display = 'block';
                 dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
+                dealerHand2.innerHTML = `Dealer Hand: ${dealerScore}`;
             }, 500);
             dealerScore += cardTen.value;
             
@@ -454,6 +473,7 @@ const dealerCards = () => {
                 dealerCardFour.src = cardEleven.imgUp;
                 dealerCardFour.style.display = 'block';
                 dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
+                dealerHand2.innerHTML = `Dealer Hand: ${dealerScore}`;
             }, 1000);
             dealerScore += cardEleven.value;
             checkForBust();
@@ -464,6 +484,7 @@ const dealerCards = () => {
                 dealerCardFive.src = cardTwelve.imgUp;
                 dealerCardFive.style.display = 'block';
                 dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
+                dealerHand2.innerHTML = `Dealer Hand: ${dealerScore}`;
             }, 2000);
             dealerScore += cardTwelve.value;
             checkForBust();
@@ -474,6 +495,7 @@ const dealerCards = () => {
                 dealerCardSix.src = cardThirteen.imgUp;
                 dealerCardSix.style.display = 'block';
                 dealerHand.innerHTML = `Dealer Hand: ${dealerScore}`;
+                dealerHand2.innerHTML = `Dealer Hand: ${dealerScore}`;
             }, 3000);
             dealerScore += cardThirteen.value;
             checkForBust();
@@ -488,16 +510,17 @@ const winner = () => {
         // console.log('blackjack pays')
         balance += wager + (wager * (3 / 2));
         balanceId.innerHTML = `Your Balance: $${balance}`;
-
+        balanceId2.innerHTML = `Your Balance: $${balance}`;
     } else if (playerWin) {
         // console.log('regular winner')
         balance += wager + wager;
         balanceId.innerHTML = `Your Balance: $${balance}`;
-
+        balanceId2.innerHTML = `Your Balance: $${balance}`;
     } else if (!playerTurn && !dealerTurn && playerScore === dealerScore) {
         // console.log('push man')
         balance += wager;
         balanceId.innerHTML = `Your Balance: $${balance}`;
+        balanceId2.innerHTML = `Your Balance: $${balance}`;
     }
 }
 
@@ -569,7 +592,7 @@ const determineWinner = () => {
 const gameOver = () => {
     standButton.style.display = 'none';
     hitButton.style.display = 'none';
-    dealButton.style.display = 'block';
+    dealButton.style.visibility = 'visible';
     wagerButton.style.display = 'block';
     newGameButton.style.display = 'block';
 }
