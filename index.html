@@ -15,6 +15,20 @@
   </head>
   <body>
     <div class="jumbotron">
+      <div class="card">
+        <img class="card-img-top" src="images/girl.jpg" alt="Woman Dealer" />
+        <div class="card-body">
+          <h5 id="dealerHand" class="card-title">Dealer Hand: </h5>
+          <br />
+          <h5 id="balanceDisplay" class="card-title">Your Balance: $500</h5>
+          <br />
+          <h5 id="wagerDisplay">Current Wager: $25</h5>
+          <br />
+          <h5 id="handScore">Your Hand:  </h5>
+        </div>
+      </div>
+      <div class="dealerPlayerContainer">
+      <div class="dealerContainer">
       <img
         id="dealerOne"
         class="playingCard dealerCardOne"
@@ -50,6 +64,12 @@
         class="playingCard dealerCardSeven"
         src="images/7C.png"
       />
+    </div>
+    <div class="hitStandContainer">
+      <button id="standBtn" class="btn btn-info stand hitStand">Stand</button>
+      <button id="hitBtn" class="btn btn-danger hit hitStand" onclick="">Hit</button>
+    </div>
+    <div class="playerContainer">
       <img id="playerOne" class="playingCard userCardOne" src="images/AS.png" />
       <img id="playerTwo" class="playingCard userCardTwo" src="images/JS.png" />
       <img
@@ -73,27 +93,21 @@
         class="playingCard userCardSeven"
         src="images/3C.png"
       />
-      <button id="standBtn" class="btn btn-info stand">Stand</button>
-      <button id="hitBtn" class="btn btn-danger hit" onclick="">Hit</button>
-      <button id="deal" class="btn btn-success dealHand" onclick="deal(cardArray)">
-        Deal
-      </button>
-      <button id="wager" class="btn btn-primary wager" onclick="changeWager()">
-        Change Wager
-      </button>
-      <button id="newGame" class="btn btn-danger newGame" onclick="newGame()">New Game</button>
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="images/girl.jpg" alt="Woman Dealer" />
-        <div class="card-body">
-          <h5 id="dealerHand" class="card-title">Dealer Hand: </h5>
-          <br />
-          <h5 id="balanceDisplay" class="card-title">Your Balance: $500</h5>
-          <br />
-          <h5 id="wagerDisplay">Current Wager: $25</h5>
-          <br />
-          <h5 id="handScore">Your Hand:  </h5>
-        </div>
+    </div>
+  </div>
+  <div class="optionsContainer">
+    <div class="card2">
+      <div class="card-body card-body2">
+        <h5 id="dealerHand2" class="scoreText card-title">Dealer Hand: </h5>
+        <h5 id="balanceDisplay2" class="scoreText card-title">Your Balance: $500</h5>
+        <h5 id="wagerDisplay2" class="scoreText">Current Wager: $25</h5>
+        <h5 id="handScore2" class="scoreText">Your Hand:  </h5>
       </div>
+    </div>
+    <button id="deal" class="btn btn-success dealHand" onclick="deal(cardArray)">Deal</button>
+    <button id="wager" class="btn btn-primary wager" onclick="changeWager()">Change Wager</button>
+    <button id="newGame" class="btn btn-danger newGame" onclick="newGame()">New Game</button>
+  </div>
     </div>
     <script src="index.js"></script>
   </body>

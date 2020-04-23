@@ -1,148 +1,93 @@
 .jumbotron {
     background-image: url("./images/bjTable2.jpg");
     background-size: cover;
-    height: 1050px;
+    height: 100vh;
+    display: flex;
 }
 
 h1 {
     color: pink;
 }
 
-body {
+/* body {
     overflow: hidden;
-}
+} */
 
 .card {
     margin-top: 8rem;
+    max-width: 15%;
+    flex:1;
+    height: 475px;
+}
+
+.card2 {
+    max-width: 170px;
+    flex: 1;
+    max-height: 150px;
+    background-color: white;
+    position: relative;
+    top: -3rem;
+    padding: 1rem 0 0 .5rem;
+    border-radius: 25px;
+    visibility: hidden;
+}
+.card-body2{
+    padding: 0;
+}
+.scoreText {
+    font-size: 14px;
+    margin-bottom: 1rem;
 }
 .playingCard {
-    width: 10%;
+    width: 100px;
+    height: 200px;
+    margin-left: -4rem;
 }
 
-.userCardOne {
-    position: absolute;
-    margin-left: 48rem;
-    margin-top: 35rem;
-
+.dealerPlayerContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    flex:3;
 }
 
-.userCardTwo {
-    position: absolute;
-    margin-left: 53rem;
-    margin-top: 35rem;
-
+.optionsContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.hitStandContainer {
+    display: flex;
+    justify-content: space-evenly;
 }
 
-.userCardThree {
-    position: absolute;
-    margin-left: 58rem;
-    margin-top: 35rem;
-    display: none;
-
+.dealerContainer {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+.playerContainer{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-end;
 }
 
-.userCardFour {
-    position: absolute;
-    margin-left: 63rem;
-    margin-top: 35rem;
-    display: none;
-
-}
-
-.userCardFive {
-    position: absolute;
-    margin-left: 68rem;
-    margin-top: 35rem;
-    display: none;
-
-}
-
-.userCardSix {
-    position: absolute;
-    margin-left: 73rem;
-    margin-top: 35rem;
-    display: none;
-
-}
-
-.userCardSeven {
-    position: absolute;
-    margin-left: 78rem;
-    margin-top: 35rem;
-    display: none;
-
-}
 
 #dealerHand {
     color: red;
 }
 
-.dealerCardOne {
-    position: absolute;
-    margin-left: 48rem;
-    margin-top: 3rem;
-}
-.dealerCardTwo {
-    position: absolute;
-    margin-left: 53rem;
-    margin-top: 3rem;
-}
-
-.dealerCardThree {
-    position: absolute;
-    margin-left: 58rem;
-    margin-top: 3rem;
-    display: none;
-}
-
-.dealerCardFour {
-    position: absolute;
-    margin-left: 63rem;
-    margin-top: 3rem;
-    display: none;
-}
-.dealerCardFive {
-    position: absolute;
-    margin-left: 68rem;
-    margin-top: 3rem;
-    display: none;
-}
-
-.dealerCardSix {
-    position: absolute;
-    margin-left: 73rem;
-    margin-top: 3rem;
-    display: none;
-}
-
-.dealerCardSeven {
-    position: absolute;
-    margin-left: 78rem;
-    margin-top: 3rem;
-    display: none;
-}
 
 .btn {
-    position: absolute;
+    /* position: absolute; */
     height: 4rem;
     width: 12rem;
+    margin-top: 2rem;
     box-shadow: black;
     font-size: 1.3rem;
 }
 
-.dealHand{
-    margin-top: 14rem;
-    margin-left: 85%;
-}
-.wager {
-    margin-top: 20rem;
-    margin-left: 85%;
-}
-
-.newGame {
-    margin-top: 26rem;
-    margin-left: 85%;
-}
 
 #playerOne {
     display: none;
@@ -163,8 +108,6 @@ body {
 .stand {
     border-radius: 50%;
     border: 5px solid white;
-    margin-top: 23rem;
-    margin-left: 35rem;
     height: 150px;
     width: 150px;
     color: white;
@@ -174,10 +117,166 @@ body {
 .hit {
     border-radius: 50%;
     border: 5px solid white;
-    margin-top: 23rem;
-    margin-left: 65rem;
     height: 150px;
     width: 150px;
     color: white;
     display: none;
 }
+
+.userCardOne {
+    /* position: absolute;
+    margin-left: 48rem;
+    margin-top: 35rem; */
+
+}
+
+.userCardTwo {
+    /* position: absolute;
+    margin-left: 53rem;
+    margin-top: 35rem; */
+
+}
+
+.userCardThree {
+    /* position: absolute;
+    margin-left: 58rem;
+    margin-top: 35rem; */
+    display: none;
+
+}
+
+.userCardFour {
+    /* position: absolute;
+    margin-left: 63rem;
+    margin-top: 35rem; */
+    display: none;
+
+}
+
+.userCardFive {
+    /* position: absolute;
+    margin-left: 68rem;
+    margin-top: 35rem; */
+    display: none;
+
+}
+
+.userCardSix {
+    /* position: absolute;
+    margin-left: 73rem;
+    margin-top: 35rem; */
+    display: none;
+
+}
+
+.userCardSeven {
+    /* position: absolute;
+    margin-left: 78rem;
+    margin-top: 35rem; */
+    display: none;
+
+}
+
+
+/* .dealHand{
+    margin-top: 14rem;
+    margin-left: 85%;
+}
+.wager {
+    margin-top: 20rem;
+    margin-left: 85%;
+} */
+
+/* .newGame {
+    margin-top: 26rem;
+    margin-left: 85%;
+} */
+
+
+.dealerCardOne {
+    /* position: absolute;
+    margin-left: 48rem;
+    margin-top: 3rem; */
+}
+.dealerCardTwo {
+    /* position: absolute;
+    margin-left: 53rem;
+    margin-top: 3rem; */
+}
+
+.dealerCardThree {
+    /* position: absolute;
+    margin-left: 58rem;
+    margin-top: 3rem; */
+    display: none;
+}
+
+.dealerCardFour {
+    /* position: absolute;
+    margin-left: 63rem;
+    margin-top: 3rem; */
+    display: none;
+}
+.dealerCardFive {
+    /* position: absolute;
+    margin-left: 68rem;
+    margin-top: 3rem; */
+    display: none;
+}
+
+.dealerCardSix {
+    /* position: absolute;
+    margin-left: 73rem;
+    margin-top: 3rem; */
+    display: none;
+}
+
+.dealerCardSeven {
+    /* position: absolute;
+    margin-left: 78rem;
+    margin-top: 3rem; */
+    display: none;
+}
+
+@media only screen 
+  and (min-width: 319px) 
+  and (max-width: 950px) {
+    .card {
+        display:none;
+    }
+
+    .btn {
+        font-size: .8rem;
+        width: 10rem;
+        height:2rem;
+    }
+
+    .optionsContainer {
+        position: relative;
+        right: .5rem;
+    }
+
+    .hitStand{
+        width: 80px;
+        height: 80px;
+        margin-right: 1rem;
+    }
+    .card2{
+        visibility: visible;
+    }
+    .optionsContainer{
+        position: fixed;
+        top:18rem;
+    }
+
+    .hitStandContainer{
+        z-index: 3;
+        margin-top: 2rem;
+    }
+
+    .btn {
+        margin:0;
+        margin-top:1rem;
+    }
+
+  }
