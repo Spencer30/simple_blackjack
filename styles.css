@@ -35,8 +35,8 @@ h1 {
     margin-bottom: 1rem;
 }
 .playingCard {
-    width: 100px;
-    height: 200px;
+    width: 200px;
+    height: 300px;
     margin-left: -4rem;
 }
 
@@ -215,6 +215,11 @@ h1 {
   and (max-width: 950px) {
     .card {
         display:none;
+    }
+    .playingCard {
+        width: 100px;
+        height: 200px;
+        margin-left: -4rem;
     }
 
     .btn {
